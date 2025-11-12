@@ -1,4 +1,26 @@
+// Disable right-click globally (optional: remove this if you only want to restrict inspection)
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
 
+// Restrict only developer tools shortcuts
+document.addEventListener('keydown', function (event) {
+    const key = event.key;
+    if (
+        (event.ctrlKey && event.shiftKey && (key === 'I' || key === 'J')) || // Ctrl+Shift+I or J
+        key === 'F12' // F12
+    ) {
+        event.preventDefault();
+        alert('Developer tools access is restricted!');
+    }
+});
+
+// Disable right-click only on images with class "-protected-image"
+document.querySelectorAll('.-protected-image').forEach(img => {
+    img.addEventListener('contextmenu', function (event) {
+        event.preventDefault();;
+    });
+});
 const products = [
   {
     id: "1",
@@ -455,3 +477,4 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 })
+
