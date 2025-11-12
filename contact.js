@@ -1,4 +1,26 @@
 
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+});
+
+
+document.addEventListener('keydown', function (event) {
+    const key = event.key;
+    if (
+        (event.ctrlKey && event.shiftKey && (key === 'I' || key === 'J')) || 
+        key === 'F12' // F12
+    ) {
+        event.preventDefault();
+        alert('Developer tools access is restricted!');
+    }
+});
+
+
+document.querySelectorAll('.-protected-image').forEach(img => {
+    img.addEventListener('contextmenu', function (event) {
+        event.preventDefault();;
+    });
+});
 let cart = []
 
 function initTheme() {
@@ -161,3 +183,4 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 })
+
